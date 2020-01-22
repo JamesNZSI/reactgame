@@ -22,23 +22,18 @@ import './index.css';
     }
 
     render() {
+      const colNum = [1, 2, 3];
+      const rowNum = [1, 2, 3];
+
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {rowNum.map((rowItem, rowIdx) => {
+            return (<div className="board-row">
+              {colNum.map((colItem, colIdx) => {
+                return this.renderSquare((rowItem - 1) * colNum.length + colItem -1)
+              })}
+            </div>)
+          })}
         </div>
       );
     }
